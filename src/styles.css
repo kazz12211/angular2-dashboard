@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+a {
+    cursor: pointer;
+}
+
+/* Header */
+
+header {
+    background: #333333;
+    color: #ffffff;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+/*Breadcrumb */
+
+.breadcrumb {
+    background: #cccccc;
+    color: #333333;
+}
+
+.breadcrumb li {
+    margin-right: 20px;
+}
+.breadcrumb a {
+    color: #333333;
+}

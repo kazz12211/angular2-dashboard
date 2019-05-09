@@ -1,0 +1,153 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <span class="navbar-brand">管理ダッシュボード</span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <ul class="nav navbar-nav">
+      <li>
+        <a class="nav-link" (click)="home()">ホーム</a>
+      </li>
+      <li [class]="activeState('dashboard')">
+        <a class="nav-link" (click)="currentPage = 'dashboard'">ダッシュボード</a>
+      </li>
+      <li [class]="activeState('documents')">
+        <a class="nav-link" (click)="currentPage = 'documents'">ドキュメント</a>
+      </li>
+      <li [class]="activeState('users')">
+        <a class="nav-link" (click)="currentPage = 'users'">ユーザ</a>
+      </li>
+      <li [class]="activeState('roles')">
+        <a class="nav-link" (click)="currentPage = 'roles'">ロール</a>
+      </li>
+      <li [class]="activeState('groups')">
+        <a class="nav-link" (click)="currentPage = 'groups'">グループ</a>
+      </li>
+      <li [class]="activeState('dataAccessGroups')">
+        <a class="nav-link" (click)="currentPage = 'dataAccessGroups'">データアクセスグループ</a>
+      </li>
+      <li [class]="activeState('workflow')">
+        <a class="nav-link" (click)="currentPage = 'workflow'">ワークフロー</a>
+      </li>
+      <li [class]="activeState('config')">
+        <a class="nav-link" (click)="currentPage = 'config'">サイト設定</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="nav-item">
+        <a class="nav-link" (click)="logout()"><i class="fas fa-sign-out-alt"></i> ログアウト</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<header id="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10">
+        <h2 style="margin-top:20px;">
+          {{pages[currentPage].title}} <small>{{pages[currentPage].subTitle}}</small>
+        </h2>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li ng-class="activeState('dashboard')"><a (click)="currentPage = 'dashboard'">ダッシュボード</a>
+      </li>
+      <li ng-class="activeState('documents')" *ngIf="currentPage === 'documents'">ドキュメント</li>
+      <li ng-class="activeState('users')" *ngIf="currentPage === 'users'">ユーザ</li>
+      <li ng-class="activeState('roles')" *ngIf="currentPage === 'roles'">ロール</li>
+      <li ng-class="activeState('groups')" *ngIf="currentPage === 'groups'">グループ</li>
+      <li ng-class="activeState('dataAccessGroups')" *ngIf="currentPage === 'dataAccessGroups'">
+        データアクセスグループ</li>
+      <li ng-class="activeState('workflow')" *ngIf="currentPage === 'workflow'">ワークフロー</li>
+      <li ng-class="activeState('config')" *ngIf="currentPage === 'config'">サイト設定</li>
+    </ol>
+  </div>
+</section>
+
+<section id="main">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="list-group">
+          <a (click)="currentPage = 'dashboard'" class="list-group-item">
+            ダッシュボード
+          </a>
+          <a (click)="currentPage = 'documents'" class="list-group-item">
+            ドキュメント <span
+              class="badge">12</span>
+          </a>
+          <a (click)="currentPage = 'users'" class="list-group-item">
+            ユーザ <span class="badge">203</span>
+          </a>
+          <a (click)="currentPage = 'roles'" class="list-group-item">
+            ロール <span class="badge">8</span>
+          </a>
+          <a (click)="currentPage = 'groups'" class="list-group-item">
+            グループ <span class="badge">10</span>
+          </a>
+          <a (click)="currentPage = 'dataAccessGroups'" class="list-group-item">
+            データアクセスグループ <span
+              class="badge">6</span>
+          </a>
+          <a (click)="currentPage = 'workflow'" class="list-group-item">
+            ワークフロー <span class="badge">3</span>
+          </a>
+          <a (click)="currentPage = 'config'" class="list-group-item">
+            サイト設定
+          </a>
+        </div>
+      </div>
+      <div class="col-md-9">
+
+        <div *ngIf="currentPage == 'dashboard'">
+          <div class="panel panel-default">
+            <div class="panel-heading main-color-bg">
+              <h3 class="panel-title">サイト概要</h3>
+            </div>
+            <div class="panel-body">
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="currentPage == 'documents'">
+          <app-recent-document-list></app-recent-document-list>
+        </div>
+
+        <div *ngIf="currentPage == 'users'">
+          <app-user-list></app-user-list>
+        </div>
+
+        <div *ngIf="currentPage == 'roles'">
+          <app-role-list></app-role-list>
+        </div>
+
+        <div *ngIf="currentPage == 'groups'">
+          <app-group-list></app-group-list>
+        </div>
+
+        <div *ngIf="currentPage == 'dataAccessGroups'">
+          <app-dag-list></app-dag-list>
+        </div>
+
+        <div *ngIf="currentPage == 'workflow'">
+          <app-workflow-setting></app-workflow-setting>
+        </div>
+
+        <div *ngIf="currentPage == 'config'">
+          <app-site-config></app-site-config>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
