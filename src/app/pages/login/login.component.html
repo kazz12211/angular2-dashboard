@@ -24,7 +24,7 @@
         <input type="password" class="form-control" name="password" placeholder="パスワード" [(ngModel)]="userInfo.password" required />
       </div>
 
-      <button type="button" class="btn btn-primary" (click)="signup()" [disabled]="signUpForm.$invalid">登録</button>
+      <button type="button" class="btn btn-primary" (click)="signup()">登録</button>
     </form>
   </div>
   
@@ -46,7 +46,7 @@
         <input type="password" class="form-control" name="password" [(ngModel)]="userInfo.password" required/>
       </div>
 
-      <button type="button" class="btn btn-primary" (click)="signin()" [disabled]="signInForm.$invalid">ログイン</button>
+      <button type="button" class="btn btn-primary" (click)="signin()">ログイン</button>
     </form>
   </div>
 
