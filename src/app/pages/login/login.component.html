@@ -1,7 +1,7 @@
 <div class="container" id="container">
   
   <div class="form-container sign-up-container">
-    <form class="form" novalidate name="signUpForm">
+    <form class="form" novalidate name="signUpForm" #signUpForm="ngForm">
       <h2>ユーザ登録</h2>
       <p></p>
       <span>SNSアカウントで認証</span>
@@ -24,12 +24,12 @@
         <input type="password" class="form-control" name="password" placeholder="パスワード" [(ngModel)]="userInfo.password" required />
       </div>
 
-      <button type="button" class="btn btn-primary" (click)="signup()">登録</button>
+      <button type="button" class="btn btn-primary" (click)="signup()" [disabled]="!signUpForm.form.valid">登録</button>
     </form>
   </div>
   
   <div class="form-container sign-in-container">
-    <form class="form" novalidate name="signInForm">
+    <form class="form" novalidate name="signInForm" #signInForm="ngForm">
       <h2>ログイン</h2>
       <p></p>
       <span>SNSアカウントで認証</span>
@@ -46,7 +46,7 @@
         <input type="password" class="form-control" name="password" [(ngModel)]="userInfo.password" required/>
       </div>
 
-      <button type="button" class="btn btn-primary" (click)="signin()">ログイン</button>
+      <button type="button" class="btn btn-primary" (click)="signin()" [disabled]="!signInForm.form.valid">ログイン</button>
     </form>
   </div>
 

@@ -5,36 +5,34 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <ul class="nav navbar-nav">
+    <ul class="navbar-nav ml-auto">
       <li [class]="activeState('home')">
-        <a class="nav-link" (click)="currentPage = 'home'"><i class="fas fa-home"></i> ホーム</a>
+        <a class="nav-item nav-link" (click)="currentPage = 'home'"><i class="fas fa-home"></i> ホーム</a>
       </li>
       <li [class]="activeState('documents')">
-        <a class="nav-link" (click)="currentPage = 'documents'"><i class="fas fa-list"></i> ドキュメント</a>
+        <a class="nav-item nav-link" (click)="currentPage = 'documents'"><i class="fas fa-list"></i> ドキュメント</a>
       </li>
       <li [class]="activeState('requests')">
-        <a class="nav-link" (click)="currentPage = 'requests'"><i class="fas fa-tasks"></i> リクエスト</a>
+        <a class="nav-item nav-link" (click)="currentPage = 'requests'"><i class="fas fa-tasks"></i> リクエスト</a>
       </li>
       <li [class]="activeState('userPrefs')">
-        <a class="nav-link" (click)="currentPage = 'userPrefs'"><i class="fas fa-user"></i> ユーザ設定</a>
+        <a class="nav-item nav-link" (click)="currentPage = 'userPrefs'"><i class="fas fa-user"></i> ユーザ設定</a>
       </li>
-      <li class="nav-item" *ngIf="isAdmin()">
+      <li class="nav-item nav-item" *ngIf="isAdmin()">
           <a class="nav-link" (click)="admin()"><i class="fas fa-cogs"></i> 管理ダッシュボード</a>
       </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li class="nav-item">
-        <a class="nav-link" (click)="logout()"><i class="fas fa-sign-out-alt"></i> ログアウト</a>
+      <li>
+        <a class="nav-item nav-link" (click)="logout()"><i class="fas fa-sign-out-alt"></i> ログアウト</a>
       </li>
     </ul>
   </div>
 </nav>
 
-<header id="header">
+<header id="header" class="d-sm-none d-md-block">
   <div class="container">
     <div class="row">
       <div class="col-md-10">
-        <h2 style="margin-top:20px;">
+        <h2 class="mt-4">
           {{pages[currentPage].title}} <small>{{pages[currentPage].subTitle}}</small>
         </h2>
       </div>
@@ -44,7 +42,7 @@
   </div>
 </header>
 
-<section id="breadcrumb">
+<section id="breadcrumb" class="d-sm-none d-md-block">
   <div class="container">
     <ol class="breadcrumb">
       <li ng-class="activeState('home')"><a (click)="currentPage = 'home'">ホーム</a>
@@ -62,7 +60,7 @@
 
     <div *ngIf="currentPage === 'home'">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 d-sm-none d-md-block">
           <div class="list-group">
             <a (click)="currentPage = 'home'" class="list-group-item">
               <i class="fas fa-home"></i> ホーム
@@ -78,7 +76,7 @@
             </a>
           </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9 col-sm-12 col-xs-12">
           <app-overview [documents]="documents.slice(0, 5)" [requests]="requests.slice(0, 5)"></app-overview>
         </div>
       </div>

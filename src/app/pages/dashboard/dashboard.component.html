@@ -5,33 +5,32 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <ul class="nav navbar-nav">
+    <ul class="navbar-nav ml-auto">
       <li>
-        <a class="nav-link" (click)="home()">ホーム</a>
+        <a class="nav-item nav-link" (click)="home()">ホーム</a>
       </li>
       <li [class]="activeState('dashboard')">
-        <a class="nav-link" (click)="currentPage = 'dashboard'">ダッシュボード</a>
+        <a class="nav-item nav-link" (click)="currentPage = 'dashboard'">ダッシュボード</a>
       </li>
       <li [class]="activeState('documents')">
-        <a class="nav-link" (click)="currentPage = 'documents'">ドキュメント</a>
+        <a class="nav-item nav-link" (click)="currentPage = 'documents'">ドキュメント</a>
       </li>
-      <li [class]="activeState('users')">
-        <a class="nav-link" (click)="currentPage = 'users'">ユーザ</a>
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          マスターデータ
+        </a>
+        <div class="dropdown-menu" aria-labelledBy="navbarDropdown">
+          <a class="dropdown-item" (click)="currentPage = 'users'">ユーザ</a>
+          <a class="dropdown-item" (click)="currentPage = 'roles'">ロール</a>
+          <a class="dropdown-item" (click)="currentPage = 'groups'">グループ</a>
+          <a class="dropdown-item" (click)="currentPage = 'dataAccessGroups'">データアクセスグループ</a>
+        </div>
       </li>
-      <li [class]="activeState('roles')">
-        <a class="nav-link" (click)="currentPage = 'roles'">ロール</a>
-      </li>
-      <li [class]="activeState('groups')">
-        <a class="nav-link" (click)="currentPage = 'groups'">グループ</a>
-      </li>
-      <li [class]="activeState('dataAccessGroups')">
-        <a class="nav-link" (click)="currentPage = 'dataAccessGroups'">データアクセスグループ</a>
-      </li>
-      <li [class]="activeState('workflow')">
-        <a class="nav-link" (click)="currentPage = 'workflow'">ワークフロー</a>
+       <li [class]="activeState('workflow')">
+        <a class="nav-item nav-link" (click)="currentPage = 'workflow'">ワークフロー</a>
       </li>
       <li [class]="activeState('config')">
-        <a class="nav-link" (click)="currentPage = 'config'">サイト設定</a>
+        <a class="nav-item nav-link" (click)="currentPage = 'config'">サイト設定</a>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
@@ -43,11 +42,11 @@
 </nav>
 
 
-<header id="header">
+<header id="header" class="d-sm-none d-md-block">
   <div class="container">
     <div class="row">
       <div class="col-md-10">
-        <h2 style="margin-top:20px;">
+        <h2 class="mt-4">
           {{pages[currentPage].title}} <small>{{pages[currentPage].subTitle}}</small>
         </h2>
       </div>
@@ -57,7 +56,7 @@
   </div>
 </header>
 
-<section id="breadcrumb">
+<section id="breadcrumb" class="d-sm-none d-md-block">
   <div class="container">
     <ol class="breadcrumb">
       <li ng-class="activeState('dashboard')"><a (click)="currentPage = 'dashboard'">ダッシュボード</a>
@@ -77,7 +76,7 @@
 <section id="main">
   <div class="container">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-3 d-sm-none d-md-block">
         <div class="list-group">
           <a (click)="currentPage = 'dashboard'" class="list-group-item">
             ダッシュボード
@@ -107,7 +106,7 @@
           </a>
         </div>
       </div>
-      <div class="col-md-9">
+      <div class="col-md-9 col-sm-12 col-xs-12">
 
         <div *ngIf="currentPage == 'dashboard'">
           <div class="panel panel-default">
